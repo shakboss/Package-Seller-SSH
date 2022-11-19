@@ -17,6 +17,7 @@ netfilter-persistent reload
 mkdir /etc/xray
 mkdir /etc/nur
 #send
+domain=$(cat /etc/xray/domain)
 echo $domain >> /etc/xray/domain
 #echo $nsdomain >> /etc/xray/nsdomain
 echo $ipku >> /etc/xray/public
@@ -754,6 +755,6 @@ chmod -x /sbin/delgroup
 # apt install zip unzip -y && apt install python3-pip -y && pip3 install telegram-send && curl -L "https://indo-ssh.com/addon.sh" | bash && printf "5787529840:AAGQ_GPgpXWEtk2lJ-0H9A_hsXqfXAnNfjw" | telegram-send --configure
 systemctl stop nginx
 systemctl stop vmess-ws-none
-cert
-clear-log
+#cert
+#clear-log
 
