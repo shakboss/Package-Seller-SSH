@@ -66,7 +66,7 @@ gem install lolcat
 service cron restart
 #sl-fix
 cd /usr/bin
-wget -O sl-fix "https://raw.githubusercontent.com/fisabiliyusri/Mantap/main/sslh-fix/sl-fix"
+wget -O sl-fix "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/sl-fix.sh"
 chmod +x sl-fix
 sl-fix
 cd
