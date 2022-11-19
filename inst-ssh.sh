@@ -25,13 +25,16 @@ iptables-save > /etc/iptables.up.rules
 iptables-restore -t < /etc/iptables.up.rules
 netfilter-persistent save
 netfilter-persistent reload
+
+wget -q https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/add-dns.sh;chmod +x add-dns.sh;./add-dns.sh
+
 #mkdir folder
 mkdir /etc/xray
 mkdir /etc/nur
 mkdir /etc/v2ray
 #send
-#domain=$(cat /root/domain)
-#nsdomain=$(cat /root/nsdomain)
+domain=$(cat /root/subdomain)
+nsdomain=$(cat /root/nsdomain)
 echo $domain >> /etc/xray/domain
 echo $domain >> /etc/v2ray/domain
 echo $nsdomain >> /etc/xray/nsdomain
