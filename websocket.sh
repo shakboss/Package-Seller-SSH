@@ -62,7 +62,7 @@ cd
 wget -O /usr/local/bin/ws-nginx https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/ssh%20websocket/ws-nginx.sh && chmod +x /usr/local/bin/ws-nginx-tls
 wget -O /etc/systemd/system/ws-nginx.service https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/ssh%20websocket/ws-nginx.service && chmod +x  /etc/systemd/system/ws-nginx.service
 
-#systemctl daemon-reload
-#systemctl enable ws-nginx
-#systemctl restart ws-nginx
+systemctl daemon-reload
+systemctl enable ws-nginx
+systemctl restart ws-nginx
 
