@@ -209,11 +209,11 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 
 cd
 #install sslh
-apt-get install sslh -y
+#apt-get install sslh -y
 #konfigurasi
 #port 333 to 44 and 777
-wget -O /etc/default/sslh "https://gitlab.com/hidessh/baru/-/raw/main/SSLH/sslh.conf"
-service sslh restart
+#wget -O /etc/default/sslh "https://gitlab.com/hidessh/baru/-/raw/main/SSLH/sslh.conf"
+#service sslh restart
 
 #install badvpncdn
 wget https://github.com/ambrop72/badvpn/archive/master.zip
