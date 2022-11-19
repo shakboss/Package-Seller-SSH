@@ -195,7 +195,7 @@ cd
 wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/fisabiliyusri/Mantap/main/ssh/badvpn-udpgw64"
 chmod +x /usr/bin/badvpn-udpgw
 sed -i '$ i\sleep 30' /etc/rc.local
-sed -i '$ i\screen -dmS stunnel python /usr/local/bin/ws-stunnel' /etc/rc.local
+#sed -i '$ i\screen -dmS stunnel python /usr/local/bin/ws-stunnel' /etc/rc.local
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 500
@@ -522,10 +522,10 @@ chmod +x /usr/bin/sftp-off
 sftp-off
 #echo "antiflood --start" >> /etc/rc.local
 echo "0 0 * * * root xp" >> /etc/crontab
-echo "0 1 * * * root delexp" >> /etc/crontab
+#echo "0 1 * * * root delexp" >> /etc/crontab
 echo "0 3 * * * root reboot" >> /etc/crontab
-echo "0 4 * * * root clear-log" >> /etc/crontab
-echo "*/59 * * * * root clear-ram" >> /etc/crontab
+
+
 #
 echo "instalasi sukses bangett yhaa gaes yhaa"
 #spam email
@@ -706,5 +706,6 @@ clear
 
 #hapus file
 cd
-rm -f funny
-rm -f install-release.sh
+
+rm -rf install-release.sh
+rm -rf inst-ssh.sh
