@@ -42,7 +42,8 @@ echo -e "$green       Installer Websocket          $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 2
 #instalasi Websocket
-wget https://raw.githubusercontent.com/hidessh99/projectku/main/websocket/hideinstall-websocket.sh && chmod +x hideinstall-websocket.sh && ./hideinstall-websocket.sh
+#wget https://raw.githubusercontent.com/hidessh99/projectku/main/websocket/hideinstall-websocket.sh && chmod +x hideinstall-websocket.sh && ./hideinstall-websocket.sh
+wget https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/websocket.sh && chmod +x websocket.sh && ./websocket.sh
 sleep 2
 clear
 
