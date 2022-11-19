@@ -340,7 +340,7 @@ wget -O port-ovpn "https://raw.githubusercontent.com/bracoli/v4/main/port/port-o
 wget -O xp "https://raw.githubusercontent.com/bracoli/v4/main/ssh/xp.sh"
 wget -O acs-set "https://raw.githubusercontent.com/bracoli/v4/main/acs-set.sh"
 
-wget -O sshws "https://raw.githubusercontent.com/bracoli/v4/main/ssh/sshws.sh"
+#wget -O sshws "https://raw.githubusercontent.com/bracoli/v4/main/ssh/sshws.sh"
 
 chmod +x menu
 chmod +x menu-vmess
@@ -442,8 +442,8 @@ sleep 1
 echo -e "[ ${green}ok${NC} ] Restarting stunnel4 "
 /etc/init.d/vnstat restart >/dev/null 2>&1
 sleep 1
-echo -e "[ ${green}ok${NC} ] Restarting vnstat "
-/etc/init.d/squid restart >/dev/null 2>&1
+#echo -e "[ ${green}ok${NC} ] Restarting vnstat "
+#/etc/init.d/squid restart >/dev/null 2>&1
 
 history -c
 echo "unset HISTFILE" >> /etc/profile
