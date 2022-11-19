@@ -26,6 +26,8 @@ if [ "$(systemd-detect-virt)" == "openvz" ]; then
 fi
 
 
+apt remove apache2 -y
+
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "$green          Installer SSH             $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
