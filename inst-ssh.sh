@@ -2,9 +2,9 @@
 #Nur_Alfiyaku
 #em0zz
 #IndoSSH
-read -p "Silahkan Masukan domain member anda : " domain
-read -p "Silahkan Masukan NSdomain slowdns : " nsdomain
-read -p "Silahkan Masukan Lapak anda : " author
+#read -p "Silahkan Masukan domain member anda : " domain
+#read -p "Silahkan Masukan NSdomain slowdns : " nsdomain
+#read -p "Silahkan Masukan Lapak anda : " author
 #update paket
 apt update -y
 apt upgrade -y
@@ -30,6 +30,8 @@ mkdir /etc/xray
 mkdir /etc/nur
 mkdir /etc/v2ray
 #send
+#domain=$(cat /root/domain)
+#nsdomain=$(cat /root/nsdomain)
 echo $domain >> /etc/xray/domain
 echo $domain >> /etc/v2ray/domain
 echo $nsdomain >> /etc/xray/nsdomain
