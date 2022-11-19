@@ -30,14 +30,24 @@ echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━�
 echo -e "$green          Installer SSH             $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 2
+wget https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/ssh.sh && chmod +x ssh.sh && ./ssh.sh
+sleep 2
+clear
+
 
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "$green       Installer Websocket          $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 2
+#instalasi Websocket
+wget https://raw.githubusercontent.com/hidessh99/projectku/main/websocket/hideinstall-websocket.sh && chmod +x hideinstall-websocket.sh && ./hideinstall-websocket.sh
+sleep 2
+clear
 
 
-
+echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$green       Installer Websocket          $NC"
+echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
 
 if [ -f "/root/log-install.txt" ]; then
