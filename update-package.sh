@@ -162,5 +162,3 @@ wget https://raw.githubusercontent.com/hidessh99/Package-tambahan-Seller/main/in
 rm -rf dns-cf.sh
 rm -rf update-package.sh
 rm -rf update-package.sh.*
-
-apt remove squid -y 
