@@ -160,25 +160,41 @@ echo "/usr/sbin/nologin" >> /etc/shells
 cd
 # install stunnel
 apt install stunnel4 -y
+#certi stunnel
+#wget -O /etc/stunnel/hidessh.pem https://gitlab.com/hidessh/baru/-/raw/main/certi/stunel && chmod +x /etc/stunnel/hidessh.pem
+#installer SSL Cloudflare 
+cd
+
+wget https://raw.githubusercontent.com/hidessh99/projectku/main/SSL/hidesvr.crt
+wget https://raw.githubusercontent.com/hidessh99/projectku/main/SSL/hidesvr.key
+#buat directory
+mkdir /etc/hidessh
+chmod +x /etc/hidessh
+
+cat hidesvr.key hidesvr.crt >> /etc/hidessh/stunnel.pem
+
+#konfigurasi stunnel4
 cat > /etc/stunnel/stunnel.conf <<-END
-cert = /etc/stunnel/stunnel.pem
+cert = /etc/hidessh/stunnel.pem
 client = no
 socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
-
 [dropbear]
 accept = 222
 connect = 127.0.0.1:22
-
+[dropbear]
+accept = 444
+connect = 127.0.0.1:300
 [dropbear]
 accept = 777
-connect = 127.0.0.1:109
-
+connect = 127.0.0.1:77
 [openvpn]
 accept = 442
 connect = 127.0.0.1:1194
-
+[slws]
+accept = 8443
+connect = 127.0.0.1:443
 END
 
 # make a certificate
@@ -191,6 +207,31 @@ cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 /etc/init.d/stunnel4 restart
 
+cd
+#install sslh
+apt-get install sslh -y
+#konfigurasi
+#port 333 to 44 and 777
+wget -O /etc/default/sslh "https://gitlab.com/hidessh/baru/-/raw/main/SSLH/sslh.conf"
+service sslh restart
+
+#install badvpncdn
+wget https://github.com/ambrop72/badvpn/archive/master.zip
+unzip master.zip
+cd badvpn-master
+mkdir build
+cmake .. -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_UDPGW=1
+sudo make install
+
+END
+
+
+# install squid
+cd
+apt -y install squid3
+wget -O /etc/squid/squid.conf "https://gitlab.com/hidessh/baru/-/raw/main/squid.conf"
+sed -i $MYIP2 /etc/squid/squid.conf
+#/etc/init.d/squid restart
 
 # install fail2ban
 apt -y install fail2ban
