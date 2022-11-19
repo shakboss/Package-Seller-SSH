@@ -45,11 +45,12 @@ sleep 2
 clear
 
 
+
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "$green       Installer Websocket          $NC"
+echo -e "$green       Installer SlowDNS            $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 2
-wget https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/slowdns.sh && chmod +x slowdns.sh && ./slowdns.sh
+#wget https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/slowdns.sh && chmod +x slowdns.sh && ./slowdns.sh
 sleep 2
 clear
 
