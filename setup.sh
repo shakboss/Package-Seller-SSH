@@ -48,7 +48,10 @@ clear
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "$green       Installer Websocket          $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-
+sleep 2
+wget https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/slowdns.sh && chmod +x slowdns.sh && ./slowdns.sh
+sleep 2
+clear
 
 if [ -f "/root/log-install.txt" ]; then
 rm /root/log-install.txt > /dev/null 2>&1
@@ -104,3 +107,4 @@ clear
 
 echo "" | tee -a log-install.txt
 rm /root/setup.sh >/dev/null 2>&1
+rm /root.slowdns.sh >/dev/null 2>&1
