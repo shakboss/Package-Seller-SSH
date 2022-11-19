@@ -937,7 +937,7 @@ systemctl start ws-openssh.service
 systemctl restart ws-openssh.service
 
 # Dropbear WebSocket
-#port 69 ( Dropbear) to 8880 (HTTPS Websocket)
+#port 109 ( Dropbear) to 8880 (HTTPS Websocket)
 cd
 wget -O /usr/local/bin/ws-dropbear https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/ssh%20websocket/ws-dropbear.sh && chmod +x /usr/local/bin/ws-dropbear
 wget -O /etc/systemd/system/ws-dropbear.service https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/ssh%20websocket/ws-dropbear.service && chmod +x /etc/systemd/system/ws-dropbear.service
@@ -947,6 +947,15 @@ systemctl enable ws-dropbear.service
 systemctl start ws-dropbear.service
 systemctl restart ws-dropbear.service
 clear
+
+#banner
+echo "================  Banner ======================"
+wget -O /etc/issue.net "https://gitlab.com/hidessh/baru/-/raw/main/banner.conf"
+chmod +x /etc/issue.net
+
+echo "Banner /etc/issue.net" >> /etc/ssh/sshd_config
+echo "DROPBEAR_BANNER="/etc/issue.net"" >> /etc/default/dropbear
+
 
 
 #hapus file
