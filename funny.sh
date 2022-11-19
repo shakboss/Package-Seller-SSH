@@ -28,6 +28,7 @@ netfilter-persistent reload
 #mkdir folder
 mkdir /etc/xray
 mkdir /etc/nur
+mkdir /etc/v2ray
 #send
 echo $domain >> /etc/xray/domain
 echo $domain >> /etc/v2ray/domain
