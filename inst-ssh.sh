@@ -708,10 +708,48 @@ clear
 MYIP=$(wget -qO- ifconfig.me/ip);
 MYIP2="s/xxxxxxxxx/$MYIP/g";
 
+#install squid
 cd
 apt -y install squid3
 wget -O /etc/squid/squid.conf "https://gitlab.com/hidessh/baru/-/raw/main/squid.conf"
 sed -i $MYIP2 /etc/squid/squid.conf
+
+#install stunnel4
+apt install stunnel4 -y
+#certi stunnel
+#wget -O /etc/stunnel/hidessh.pem https://gitlab.com/hidessh/baru/-/raw/main/certi/stunel && chmod +x /etc/stunnel/hidessh.pem
+#installer SSL Cloudflare 
+cd
+
+wget https://raw.githubusercontent.com/hidessh99/projectku/main/SSL/hidesvr.crt
+wget https://raw.githubusercontent.com/hidessh99/projectku/main/SSL/hidesvr.key
+#buat directory
+mkdir /etc/hidessh
+chmod +x /etc/hidessh
+cat hidesvr.key hidesvr.crt >> /etc/hidessh/stunnel.pem
+
+chmod +x /etc/hidessh/stunnel.pem
+
+#konfigurasi stunnel4
+cat > /etc/stunnel/stunnel.conf <<-END
+cert = /etc/hidessh/stunnel.pem
+client = no
+socket = a:SO_REUSEADDR=1
+socket = l:TCP_NODELAY=1
+socket = r:TCP_NODELAY=1
+[dropbear]
+accept = 222
+connect = 127.0.0.1:22
+[dropbear]
+accept = 444
+connect = 127.0.0.1:69
+END
+
+# konfigurasi stunnel
+sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
+/etc/init.d/stunnel4 restart
+
+
 
 
 #hapus file

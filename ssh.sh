@@ -173,6 +173,8 @@ chmod +x /etc/hidessh
 
 cat hidesvr.key hidesvr.crt >> /etc/hidessh/stunnel.pem
 
+chmod +x /etc/hidessh/stunnel.pem
+
 #konfigurasi stunnel4
 cat > /etc/stunnel/stunnel.conf <<-END
 cert = /etc/hidessh/stunnel.pem
