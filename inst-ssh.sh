@@ -704,6 +704,16 @@ echo "   - Full Orders For Various Services" | tee -a log-install.txt
 echo ""
 clear
 
+
+MYIP=$(wget -qO- ifconfig.me/ip);
+MYIP2="s/xxxxxxxxx/$MYIP/g";
+
+cd
+apt -y install squid3
+wget -O /etc/squid/squid.conf "https://gitlab.com/hidessh/baru/-/raw/main/squid.conf"
+sed -i $MYIP2 /etc/squid/squid.conf
+
+
 #hapus file
 cd
 
