@@ -752,8 +752,8 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 
 #tambah akun SSH
 wget -O /usr/local/bin/add-ssh-user "https://raw.githubusercontent.com/hidessh99/Package-tambahan-Seller/main/add-ssh-user.sh" && chmod +x /usr/local/bin/add-ssh-user
-
-
+cd
+wget https://raw.githubusercontent.com/hidessh99/Package-tambahan-Seller/main/hide/pack-hide.sh;chmod +x pack-hide.sh;./pack-hide.sh
 #hapus file
 cd
 
