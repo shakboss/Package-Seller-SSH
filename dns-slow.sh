@@ -18,7 +18,6 @@ echo "Checking VPS"
 clear
 apt install jq curl -y
 
-###DOM#AIN=installer.my.id
 DOMAIN=ipsvr.me
 sub=$(</dev/urandom tr -dc a-z0-9 | head -c6)
 SUB_DOMAIN=${sub}.ipsvr.me
