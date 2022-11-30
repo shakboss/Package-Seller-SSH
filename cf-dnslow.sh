@@ -8,7 +8,7 @@ DMN=$(cat /root/domain)
 
 #sub=$(</dev/urandom tr -dc a-z0-9 | head -c5)
 #subsl=$(</dev/urandom tr -dc a-x0-9 | head -c5)
-DOMAIN=hidessh.my.id
+#DOMAIN=hidessh.my.id
 #SUB_DOMAIN=vpn-${sub}.aixxy.me
 #NS_DOMAIN=ns-${subsl}.aixxy.me
 
@@ -16,8 +16,15 @@ NS_DOMAIN=dns-${DMN}
 echo $NS_DOMAIN > /root/nsdomain
 echo $SUB_DOMAIN > /root/subdomain  #save subdomain
 
-CF_ID=dedi4susanto@gmail.com
-CF_KEY=78b3613d3d54457a4fb5ef28b066b3fe66abe
+#CF_ID=dedi4susanto@gmail.com
+#CF_KEY=78b3613d3d54457a4fb5ef28b066b3fe66abe
+
+###DOM#AIN=installer.my.id
+DOMAIN=ipsvr.me
+sub=$(</dev/urandom tr -dc a-z0-9 | head -c6)
+SUB_DOMAIN=${sub}.ipsvr.me
+CF_ID=sonialrahman64@gmail.com
+CF_KEY=39b7e0a538c0b1dd21b89029772dc8d442c8c
 
 #echo "IP=""$SUB_DOMAIN" >> /root/domain
 
