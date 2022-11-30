@@ -16,7 +16,7 @@ NS_DOMAIN=dns-${DMN}
 echo $NS_DOMAIN > /root/nsdomain
 echo $SUB_DOMAIN > /root/subdomain  #save subdomain
 
-#CF_ID=dedi4susanto@gmail.com
+#CF_ID=dedi4susanto@gmail.coma
 #CF_KEY=78b3613d3d54457a4fb5ef28b066b3fe66abe
 
 ###DOM#AIN=installer.my.id
