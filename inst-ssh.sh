@@ -25,23 +25,32 @@ iptables-save > /etc/iptables.up.rules
 iptables-restore -t < /etc/iptables.up.rules
 netfilter-persistent save
 netfilter-persistent reload
-
 #mkdir folder
 mkdir /etc/xray
 mkdir /etc/nur
 mkdir /etc/v2ray
+mkdir /var/lib/scrz-prem/
+touch /etc/xray/domain
+touch /etc/v2ray/domain
+touch /etc/xray/scdomain
+touch /etc/v2ray/scdomain
+touch /var/lib/scrz-prem/ipvps.conf
 
 wget -q https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/add-dns.sh;chmod +x add-dns.sh;./add-dns.sh
 
 #send
 domain=$(cat /root/subdomain)
 nsdomain=$(cat /root/nsdomain)
-echo $domain >> /etc/xray/domain
-echo $domain >> /etc/v2ray/domain
+#echo $domain >> /etc/xray/domain
+echo $ipku >> /etc/xray/public
+#send
+
 echo $nsdomain >> /etc/xray/nsdomain
 echo $ipku >> /etc/xray/public
-echo $resdomain >> /etc/xray/resdomain
-echo $author >> /etc/nur/author
+#echo $resdomain >> /etc/xray/resdomain
+#echo $author >> /etc/nur/author
+#SLOWDNS
+
 #SLOWDNS
 apt update -y
 apt install -y python3 python3-dnslib net-tools
