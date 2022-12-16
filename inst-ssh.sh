@@ -388,7 +388,7 @@ cat> /etc/xray/ntls.json << END
             "xver": 0
           },
           {
-            "dest": 58080,
+            "dest": 700,
             "xver": 1
           },
           {
@@ -531,12 +531,6 @@ systemctl daemon-reload
 systemctl enable ws-openssh.service
 systemctl restart ws-openssh.service
 
-#port 143 to 80 (HTTPS Websocket)
-wget -O /usr/local/bin/ws-dropbear-tls https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/ssh%20websocket/ws-openssh-tls.sh && chmod +x /usr/local/bin/ws-openssh-tls
-wget -O /etc/systemd/system/ws-dropbeaar-tls.service https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/ssh%20websocket/ws-openssh-tls.service && chmod +x /etc/systemd/system/ws-openssh-tls.service
-systemctl daemon-reload
-systemctl enable ws-dropbear-tls
-systemctl restart ws-dropbear-tls
 
 # Dropbear WebSocket
 #port 109 ( Dropbear) to 8880 (HTTPS Websocket)
