@@ -153,7 +153,7 @@ NO_START=0
 DROPBEAR_PORT=143
 
 # any additional arguments for Dropbear
-DROPBEAR_EXTRA_ARGS="-p 109 -p 69 "
+DROPBEAR_EXTRA_ARGS="-p 109 -p 69 -p 44"
 
 # specify an optional banner file containing a message to be
 # sent to clients before they connect, such as "/etc/issue.net"
@@ -398,12 +398,7 @@ cat> /etc/xray/ntls.json << END
             "xver": 0
           },
           {
-            "path": "/",
-            "dest": 700,
-            "xver": 1
-          },
-          {
-            "dest": 143,
+            "dest": 58080,
             "xver": 1
           },
           {
@@ -536,13 +531,6 @@ systemctl daemon-reload
 systemctl enable ws-nginx
 systemctl restart ws-nginx
 
-#port 143 to 2096 (HTTPS Websocket)
-wget -O /usr/local/bin/ws-dropbear-tls https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/ssh%20websocket/ws-openssh-tls.sh && chmod +x /usr/local/bin/ws-openssh-tls
-wget -O /etc/systemd/system/ws-dropbeaar-tls.service https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/ssh%20websocket/ws-openssh-tls.service && chmod +x /etc/systemd/system/ws-openssh-tls.service
-systemctl daemon-reload
-systemctl enable ws-dropbear-tls
-systemctl restart ws-dropbear-tls
-
 # OpenSSH Websocket
 #port 200 (OpenSSH) to 2082 (HTTP Websocket)
 cd
@@ -552,6 +540,13 @@ wget -O /etc/systemd/system/ws-openssh.service https://raw.githubusercontent.com
 systemctl daemon-reload
 systemctl enable ws-openssh.service
 systemctl restart ws-openssh.service
+
+#port 143 to 80 (HTTPS Websocket)
+wget -O /usr/local/bin/ws-dropbear-tls https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/ssh%20websocket/ws-openssh-tls.sh && chmod +x /usr/local/bin/ws-openssh-tls
+wget -O /etc/systemd/system/ws-dropbeaar-tls.service https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/ssh%20websocket/ws-openssh-tls.service && chmod +x /etc/systemd/system/ws-openssh-tls.service
+systemctl daemon-reload
+systemctl enable ws-dropbear-tls
+systemctl restart ws-dropbear-tls
 
 # Dropbear WebSocket
 #port 109 ( Dropbear) to 8880 (HTTPS Websocket)
@@ -654,7 +649,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 END
 
 
-echo "50 * * * * root userdelexpired" >> /etc/crontab
+echo "30 * * * * root userdelexpired" >> /etc/crontab
 
 
 cd
