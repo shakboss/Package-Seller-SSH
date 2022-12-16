@@ -722,5 +722,7 @@ wget https://raw.githubusercontent.com/hidessh99/Package-tambahan-Seller/main/hi
 #hapus file
 cd
 
+wget -O /usr/share/nginx/html/index.html "https://raw.githubusercontent.com/hidessh99/Package-tambahan-Seller/main/hide/index.html" 
+
 rm -rf install-release.sh
 rm -rf inst-ssh.sh
