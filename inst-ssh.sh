@@ -1,10 +1,4 @@
 #!/bin/bash
-#Nur_Alfiyaku
-#em0zz
-#IndoSSH
-#read -p "Silahkan Masukan domain member anda : " domain
-#read -p "Silahkan Masukan NSdomain slowdns : " nsdomain
-#read -p "Silahkan Masukan Lapak anda : " author
 #update paket
 apt update -y
 apt upgrade -y
@@ -35,23 +29,14 @@ touch /etc/v2ray/domain
 touch /etc/xray/scdomain
 touch /etc/v2ray/scdomain
 touch /var/lib/scrz-prem/ipvps.conf
-
+#add recond dns
 wget -q https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/add-dns.sh;chmod +x add-dns.sh;./add-dns.sh
-
 #send
 domain=$(cat /root/subdomain)
 nsdomain=$(cat /root/nsdomain)
-#echo $domain >> /etc/xray/domain
 echo $ipku >> /etc/xray/public
-#send
-
 echo $nsdomain >> /etc/xray/nsdomain
-echo $ipku >> /etc/xray/public
-#echo $resdomain >> /etc/xray/resdomain
-#echo $author >> /etc/nur/author
-#SLOWDNS
-
-#SLOWDNS
+#update package
 apt update -y
 apt install -y python3 python3-dnslib net-tools
 apt install ncurses-utils -y
@@ -78,6 +63,7 @@ cd /usr/bin
 wget -O sl-fix "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/sl-fix.sh"
 chmod +x sl-fix
 sl-fix
+#setting openssh
 cd
 sed -i 's/#AllowTcpForwarding yes/AllowTcpForwarding yes/g' /etc/ssh/sshd_config
 sed -i 's/Port 22/#Port 22/g' /etc/ssh/sshd_config
@@ -91,6 +77,7 @@ sed -i '/Port 22/a Port 200' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 22' /etc/ssh/sshd_config
 /etc/init.d/ssh restart
 
+#SLOWDNS
 rm -rf /etc/slowdns
 mkdir -m 777 /etc/slowdns
 wget -q -O /etc/slowdns/server.key "https://raw.githubusercontent.com/fisabiliyusri/SLDNS/main/slowdns/server.key"
@@ -103,7 +90,7 @@ chmod +x /etc/slowdns/server.pub
 chmod +x /etc/slowdns/sldns-server
 chmod +x /etc/slowdns/sldns-client
 cd
-#install client-sldns.service
+#systemctl client-sldns.service
 cat > /etc/systemd/system/client-sldns.service << END
 [Unit]
 Description=Client SlowDNS By HideSSH
@@ -121,7 +108,7 @@ Restart=on-failure
 WantedBy=multi-user.target
 END
 cd
-#install server-sldns.service
+#systemctl server-sldns.service
 cat > /etc/systemd/system/server-sldns.service << END
 [Unit]
 Description=Server SlowDNS By HideSSH
@@ -154,7 +141,7 @@ systemctl restart client-sldns
 systemctl restart server-sldns
 cd
 #END
-#INSTALL SSH
+#INSTALL dropbear
 apt install dropbear
 rm /etc/default/dropbear
 rm /etc/issue.net
@@ -188,12 +175,6 @@ END
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 /etc/init.d/dropbear restart
-cat> /etc/issue.net <<END
-<br>
-<font color="blue"><b>===============================</br></font><br>
-<font color="red"><b>********  Funny VPN  ********</b></font><br>
-<font color="blue"><b>===============================</br></font><br>
-END
 #ws-stunnel
 cp ws-stunnel /usr/local/bin/ws-stunnel
 # install badvpn
@@ -505,12 +486,6 @@ WantedBy=multi-user.target
 END
 #enable systemd
 systemctl enable trojan-tcp
-#systemctl enable trojan-ws
-#systemctl enable trojan-grpc
-#systemctl enable vless-ws
-#systemctl enable vless-grpc
-#systemctl enable vmess-ws
-#systemctl enable vmess-grpc
 systemctl enable ntls
 systemctl enable nginx
 systemctl disable xray
@@ -554,13 +529,19 @@ wget -O /etc/xray/xray.key https://raw.githubusercontent.com/hidessh99/SSL/main/
 
 #SSH Webcoket
 
-#nginx 69 to 443
+#nginx 69 to 443 HTTPS
 wget -O /usr/local/bin/ws-nginx https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/ssh%20websocket/ws-nginx.sh && chmod +x /usr/local/bin/ws-nginx-tls
 wget -O /etc/systemd/system/ws-nginx.service https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/ssh%20websocket/ws-nginx.service && chmod +x  /etc/systemd/system/ws-nginx.service
-
 systemctl daemon-reload
 systemctl enable ws-nginx
 systemctl restart ws-nginx
+
+#port 143 to 2096 (HTTPS Websocket)
+wget -O /usr/local/bin/ws-dropbear-tls https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/ssh%20websocket/ws-openssh-tls.sh && chmod +x /usr/local/bin/ws-openssh-tls
+wget -O /etc/systemd/system/ws-dropbeaar-tls.service https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/ssh%20websocket/ws-openssh-tls.service && chmod +x /etc/systemd/system/ws-openssh-tls.service
+systemctl daemon-reload
+systemctl enable ws-dropbear-tls
+systemctl restart ws-dropbear-tls
 
 # OpenSSH Websocket
 #port 200 (OpenSSH) to 2082 (HTTP Websocket)
@@ -570,7 +551,6 @@ wget -O /etc/systemd/system/ws-openssh.service https://raw.githubusercontent.com
 
 systemctl daemon-reload
 systemctl enable ws-openssh.service
-systemctl start ws-openssh.service
 systemctl restart ws-openssh.service
 
 # Dropbear WebSocket
