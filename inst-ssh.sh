@@ -103,14 +103,11 @@ chmod +x /etc/slowdns/server.pub
 chmod +x /etc/slowdns/sldns-server
 chmod +x /etc/slowdns/sldns-client
 cd
-#wget -q -O /etc/systemd/system/client-sldns.service "https://raw.githubusercontent.com/fisabiliyusri/SLDNS/main/slowdns/client-sldns.service"
-#wget -q -O /etc/systemd/system/server-sldns.service "https://raw.githubusercontent.com/fisabiliyusri/SLDNS/main/slowdns/server-sldns.service"
-cd
 #install client-sldns.service
 cat > /etc/systemd/system/client-sldns.service << END
 [Unit]
-Description=Client SlowDNS By FunnyVPN
-Documentation=https://nekopoi.care
+Description=Client SlowDNS By HideSSH
+Documentation=https://hidessh.com
 After=network.target nss-lookup.target
 [Service]
 Type=simple
@@ -127,8 +124,8 @@ cd
 #install server-sldns.service
 cat > /etc/systemd/system/server-sldns.service << END
 [Unit]
-Description=Server SlowDNS By FunnyVPN
-Documentation=https://nekopoi.care
+Description=Server SlowDNS By HideSSH
+Documentation=https://hidessh.com
 After=network.target nss-lookup.target
 [Service]
 Type=simple
