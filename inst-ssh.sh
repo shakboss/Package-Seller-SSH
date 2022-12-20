@@ -633,7 +633,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 END
 
 
-echo "30 * * * * root userdelexpired" >> /etc/crontab
+echo "0 */2 * * * root userdelexpired" >> /etc/crontab
 
 
 cd
@@ -727,7 +727,7 @@ wget -O /usr/share/nginx/html/index.html "https://raw.githubusercontent.com/hide
 #remove log
 wget -q -O /usr/bin/removelog "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/remove-log.sh" && chmod +x /usr/bin/removelog
 #cronjob
-echo "30 * * * * root removelog" >> /etc/crontab
+echo "0 */1 * * * root removelog" >> /etc/crontab
 
 rm -rf install-release.sh
 rm -rf inst-ssh.sh
