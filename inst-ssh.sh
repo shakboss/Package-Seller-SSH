@@ -552,8 +552,7 @@ chmod +x /etc/issue.net
 
 echo "Banner /etc/issue.net" >> /etc/ssh/sshd_config
 echo "DROPBEAR_BANNER="/etc/issue.net"" >> /etc/default/dropbear
-
-
+service restart dropbear
 
 # download script
 cd /usr/bin
@@ -568,7 +567,6 @@ wget -O delete "https://raw.githubusercontent.com/bracoli/v4/main/ssh/delete.sh"
 wget -O autokill "https://raw.githubusercontent.com/bracoli/v4/main/ssh/autokill.sh"
 wget -O ceklim "https://raw.githubusercontent.com/bracoli/v4/main/ssh/ceklim.sh"
 wget -O tendang "https://raw.githubusercontent.com/bracoli/v4/main/ssh/tendang.sh"
-
 # menu system
 wget -O menu-set "https://raw.githubusercontent.com/bracoli/v4/main/menu/menu-set.sh"
 wget -O menu-domain "https://raw.githubusercontent.com/bracoli/v4/main/menu/menu-domain.sh"
@@ -581,17 +579,18 @@ wget -O about "https://raw.githubusercontent.com/bracoli/v4/main/menu/about.sh"
 wget -O auto-reboot "https://raw.githubusercontent.com/bracoli/v4/main/menu/auto-reboot.sh"
 wget -O restart "https://raw.githubusercontent.com/bracoli/v4/main/menu/restart.sh"
 wget -O bw "https://raw.githubusercontent.com/bracoli/v4/main/menu/bw.sh"
-
 # change port
 wget -O port-ssl "https://raw.githubusercontent.com/bracoli/v4/main/port/port-ssl.sh"
 wget -O port-ovpn "https://raw.githubusercontent.com/bracoli/v4/main/port/port-ovpn.sh"
-
-
 wget -O xp "https://raw.githubusercontent.com/bracoli/v4/main/ssh/xp.sh"
 wget -O acs-set "https://raw.githubusercontent.com/bracoli/v4/main/acs-set.sh"
 wget -O userdelexpired "https://gitlab.com/hidessh/baru/-/raw/main/userdelexpired.sh"
-
-
+# tambahan package hide
+wget -O mesinssh "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/mesinssh"
+wget -O limit-ssh "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/limit-ssh"
+#permission
+chmod +x mesinssh
+chmod +x limit-ssh
 chmod +x userdelexpired
 chmod +x menu-ssh
 chmod +x usernew
@@ -619,7 +618,6 @@ chmod +x bw
 
 chmod +x port-ssl
 chmod +x port-ovpn
-
 chmod +x xp
 chmod +x acs-set
 chmod +x sshws
@@ -669,9 +667,7 @@ sed -i $MYIP2 /etc/squid/squid.conf
 
 #install stunnel4
 apt install stunnel4 -y
-#certi stunnel
-#wget -O /etc/stunnel/hidessh.pem https://gitlab.com/hidessh/baru/-/raw/main/certi/stunel && chmod +x /etc/stunnel/hidessh.pem
-#installer SSL Cloudflare 
+
 cd
 
 wget https://raw.githubusercontent.com/hidessh99/projectku/main/SSL/hidesvr.crt
@@ -702,20 +698,16 @@ END
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 /etc/init.d/stunnel4 restart
 
-
+cd
 #tambah akun SSH
 wget -O /usr/local/bin/add-ssh-user "https://raw.githubusercontent.com/hidessh99/Package-tambahan-Seller/main/add-ssh-user.sh" && chmod +x /usr/local/bin/add-ssh-user
-cd
-wget https://raw.githubusercontent.com/hidessh99/Package-tambahan-Seller/main/hide/pack-hide.sh;chmod +x pack-hide.sh;./pack-hide.sh
 #hapus file
-cd
-
 wget -O /usr/share/nginx/html/index.html "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/index.html" 
 
 #remove log
 wget -q -O /usr/bin/removelog "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/remove-log.sh" && chmod +x /usr/bin/removelog
-#cronjob
 
+#cronjob
 cat > /etc/cron.d/re_otm <<-END
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
@@ -723,6 +715,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 END
 
 echo "0 */2 * * * root userdelexpired" >> /etc/crontab
+echo "*/30 * * * * root limit-ssh" >> /etc/crontab
 echo "0 1 * * * root removelog" >> /etc/crontab
 
 rm -rf install-release.sh
