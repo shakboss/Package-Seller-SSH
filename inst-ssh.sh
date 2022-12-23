@@ -558,7 +558,7 @@ service restart dropbear
 cd /usr/bin
 wget -O menu-ssh "https://raw.githubusercontent.com/bracoli/v4/main/menu/menu-ssh.sh"
 wget -O usernew "https://raw.githubusercontent.com/bracoli/v4/main/ssh/usernew.sh"
-wget -O trial "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/trial.sh"
+wget -O trial "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/trial-ssh.sh"
 wget -O renew "https://raw.githubusercontent.com/bracoli/v4/main/ssh/renew.sh"
 wget -O hapus "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/delssh.sh"
 wget -O cek "https://raw.githubusercontent.com/bracoli/v4/main/ssh/cek.sh"
