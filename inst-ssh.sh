@@ -564,7 +564,7 @@ wget -O renew "https://raw.githubusercontent.com/bracoli/v4/main/ssh/renew.sh"
 wget -O hapus "https://raw.githubusercontent.com/bracoli/v4/main/ssh/hapus.sh"
 wget -O cek "https://raw.githubusercontent.com/bracoli/v4/main/ssh/cek.sh"
 wget -O member "https://raw.githubusercontent.com/bracoli/v4/main/ssh/member.sh"
-wget -O delete "https://raw.githubusercontent.com/bracoli/v4/main/ssh/delete.sh"
+wget -O delete "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/delssh.sh"
 wget -O autokill "https://raw.githubusercontent.com/bracoli/v4/main/ssh/autokill.sh"
 wget -O ceklim "https://raw.githubusercontent.com/bracoli/v4/main/ssh/ceklim.sh"
 wget -O tendang "https://raw.githubusercontent.com/bracoli/v4/main/ssh/tendang.sh"
@@ -623,18 +623,6 @@ chmod +x port-ovpn
 chmod +x xp
 chmod +x acs-set
 chmod +x sshws
-cd
-
-
-cat > /etc/cron.d/re_otm <<-END
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-0 2 * * * root /sbin/reboot
-END
-
-
-echo "0 */2 * * * root userdelexpired" >> /etc/crontab
-
 
 cd
 echo "------------------------------------------------------------"
@@ -727,7 +715,15 @@ wget -O /usr/share/nginx/html/index.html "https://raw.githubusercontent.com/hide
 #remove log
 wget -q -O /usr/bin/removelog "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/remove-log.sh" && chmod +x /usr/bin/removelog
 #cronjob
-echo "0 */1 * * * root removelog" >> /etc/crontab
+
+cat > /etc/cron.d/re_otm <<-END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+0 2 * * * root /sbin/reboot
+END
+
+echo "0 */2 * * * root userdelexpired" >> /etc/crontab
+echo "0 1 * * * root removelog" >> /etc/crontab
 
 rm -rf install-release.sh
 rm -rf inst-ssh.sh
