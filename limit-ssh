@@ -9,19 +9,16 @@ do
 cekcek=$(echo -e "$mulog" | grep $user | wc -l);
 if [[ $cekcek -gt 1 ]]; then
 echo -e "$mulog | grep $user | cut -d ' ' -f 1" >> kelazz
+killall -u $user
+killall -9 -u $user
 userdel -f -r $user
+userdel $user
 nais=3
 echo -e "$waktu\nRemoved User: $user Login: $cekcek IP Max: 1 IP \n" >> ssh.log
 else
 echo > /dev/null
 fi
 sleep 0.1
-done
-#kill pid
-mia=( `cat kelazz`);
-for ehh in ${mia[@]}
-do
-kill $ehh
 done
 echo "sukses"
 rm kelazz

@@ -11,8 +11,10 @@ read -p "Username SSH to Delete : " Pengguna
 
 if getent passwd $Pengguna > /dev/null 2>&1; then
         killall -u $Pengguna > /dev/null 2>&1
+        killall -9 -u $Pengguna > /dev/null 2>&1
         userdel $Pengguna > /dev/null 2>&1
         userdel -f -r $Pengguna > /dev/null 2>&1
+        userdel $Pengguna > /dev/null 2>&1
         echo -e "User $Pengguna was removed."
 else
         echo -e "Failure: User $Pengguna Not Exist."
