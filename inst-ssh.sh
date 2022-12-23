@@ -584,7 +584,7 @@ wget -O port-ssl "https://raw.githubusercontent.com/bracoli/v4/main/port/port-ss
 wget -O port-ovpn "https://raw.githubusercontent.com/bracoli/v4/main/port/port-ovpn.sh"
 wget -O xp "https://raw.githubusercontent.com/bracoli/v4/main/ssh/xp.sh"
 wget -O acs-set "https://raw.githubusercontent.com/bracoli/v4/main/acs-set.sh"
-wget -O userdelexpired "https://gitlab.com/hidessh/baru/-/raw/main/userdelexpired.sh"
+wget -O userdelexpired "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/userdelexpired.sh"
 # tambahan package hide
 wget -O mesinssh "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/mesinssh"
 wget -O limit-ssh "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/limit-ssh"
