@@ -7,8 +7,8 @@ for user in "${data[@]}"
 do
 #iplimit=$(cat /etc/funny/limit/ssh/ip/$user)
 cekcek=$(echo -e "$mulog" | grep $user | wc -l);
-if [[ $cekcek -gt 1 ]]; then
-echo -e "$mulog | grep $user | cut -d ' ' -f 1" >> kelazz
+if [[ $cekcek -gt 2 ]]; then
+echo -e "$mulog | grep $user | cut -d ' ' -f 2" >> kelazz
 killall -u $user
 killall -9 -u $user
 userdel -f -r $user
