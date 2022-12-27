@@ -28,4 +28,6 @@ echo > /var/log/syslog
 echo > /var/log/btmp
 echo > /var/log/messages
 echo > /var/log/debug
+echo -n > /var/log/auth.log
+echo -n > /var/log/daemon.log
 
