@@ -714,8 +714,8 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 0 2 * * * root /sbin/reboot
 END
 
-echo "0 */2 * * * root userdelexpired" >> /etc/crontab
-echo "*/30 * * * * root limit-ssh" >> /etc/crontab
+echo "0 */30 * * * root userdelexpired" >> /etc/crontab
+echo "*/10 * * * * root limit-ssh" >> /etc/crontab
 echo "0 1 * * * root removelog" >> /etc/crontab
 
 rm -rf install-release.sh
