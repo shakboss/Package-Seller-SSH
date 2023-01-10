@@ -59,10 +59,10 @@ apt install python ruby -y
 gem install lolcat
 service cron restart
 #sl-fix
-cd /usr/bin
-wget -O sl-fix "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/sl-fix.sh"
-chmod +x sl-fix
-sl-fix
+#cd /usr/bin
+#wget -O sl-fix "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/sl-fix.sh"
+#chmod +x sl-fix
+#sl-fix
 #setting openssh
 cd
 sed -i 's/#AllowTcpForwarding yes/AllowTcpForwarding yes/g' /etc/ssh/sshd_config
@@ -178,14 +178,26 @@ echo "/usr/sbin/nologin" >> /etc/shells
 #ws-stunnel
 cp ws-stunnel /usr/local/bin/ws-stunnel
 # install badvpn
+#wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/fisabiliyusri/Mantap/main/ssh/badvpn-udpgw64"
+#chmod +x /usr/bin/badvpn-udpgw
 cd
-wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/fisabiliyusri/Mantap/main/ssh/badvpn-udpgw64"
-chmod +x /usr/bin/badvpn-udpgw
-sed -i '$ i\sleep 30' /etc/rc.local
-#sed -i '$ i\screen -dmS stunnel python /usr/local/bin/ws-stunnel' /etc/rc.local
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 500
+git clone https://github.com/ambrop72/badvpn
+cd badvpn
+cmake -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_UDPGW=1
+make install
+
+#creating badvpn systemd service unit
+#wget -O /etc/systemd/system/trojan-grpc.service "https://raw.githubusercontent.com/hidessh99/testing-sellerv2/main/service/trojan-grpc.service"
+
+wget -O /etc/systemd/system/udpqw-7100.service ""
+
+
+
+#seting rc local
+sed -i '$ i\iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300' /etc/rc.local
+sed -i '$ i\iptables -I INPUT -p udp --dport 5300 -j ACCEPT' /etc/rc.local
+sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
+sed -i '$ i\sleep 20' /etc/rc.local
 
 cd
 #END
