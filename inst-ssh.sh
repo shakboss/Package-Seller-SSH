@@ -187,13 +187,12 @@ cmake -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_UDPGW=1
 make install
 
 #creating badvpn systemd service unit
-#wget -O /etc/systemd/system/trojan-grpc.service "https://raw.githubusercontent.com/hidessh99/testing-sellerv2/main/service/trojan-grpc.service"
-
-wget -O /etc/systemd/system/udpqw-7100.service ""
-
-
+wget -O /etc/systemd/system/udpqw-7100.service "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/system/udpqw-7100.service"
+wget -O /etc/systemd/system/udpqw-7200.service "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/system/udpqw-7200.service"
+wget -O /etc/systemd/system/udpqw-7300.service "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/system/udpqw-7300.service"
 
 #seting rc local
+cd
 sed -i '$ i\iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300' /etc/rc.local
 sed -i '$ i\iptables -I INPUT -p udp --dport 5300 -j ACCEPT' /etc/rc.local
 sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
