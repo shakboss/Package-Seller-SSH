@@ -177,58 +177,6 @@ echo "/usr/sbin/nologin" >> /etc/shells
 /etc/init.d/dropbear restart
 #ws-stunnel
 cp ws-stunnel /usr/local/bin/ws-stunnel
-# install badvpn
-#wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/fisabiliyusri/Mantap/main/ssh/badvpn-udpgw64"
-#chmod +x /usr/bin/badvpn-udpgw
-cd
-git clone https://github.com/ambrop72/badvpn
-cd badvpn
-cmake -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_UDPGW=1
-make install
-
-#creating badvpn systemd service unit
-wget -O /etc/systemd/system/udpqw-7100.service "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/system/udpqw-7100.service"
-wget -O /etc/systemd/system/udpqw-7200.service "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/system/udpqw-7200.service"
-wget -O /etc/systemd/system/udpqw-7300.service "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/system/udpqw-7300.service"
-
-#reboot system 7100
-systemctl daemon-reload
-systemctl start udpqw-7100.service
-systemctl enable udpqw-7100.service
-systemctl restart udpqw-7100.service
-#reboot system 7200
-systemctl daemon-reload
-systemctl start udpqw-7200.service
-systemctl enable udpqw-7200.service
-systemctl restart udpqw-7200.service
-#reboot system 7300
-systemctl daemon-reload
-systemctl start udpqw-7300.service
-systemctl enable udpqw-7300.service
-systemctl restart udpqw-7300.service
-
-cd /root/
-# nano /etc/rc.local
-cat > /etc/rc.local <<-END
-#!/bin/sh -e
-# rc.local
-# By default this script does nothing.
-
-exit 0
-END
-
-#seting rc local
-cd
-sed -i '$ i\iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300' /etc/rc.local
-sed -i '$ i\iptables -I INPUT -p udp --dport 5300 -j ACCEPT' /etc/rc.local
-sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
-sed -i '$ i\sleep 20' /etc/rc.local
-
-# Ubah izin akses
-chmod +x /etc/rc.local
-# enable rc local
-systemctl enable rc-local
-systemctl start rc-local.service
 
 cd
 #END
@@ -760,6 +708,60 @@ END
 echo "0 */30 * * * root userdelexpired" >> /etc/crontab
 echo "*/10 * * * * root limit-ssh" >> /etc/crontab
 echo "0 1 * * * root removelog" >> /etc/crontab
+
+# install badvpn
+#wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/fisabiliyusri/Mantap/main/ssh/badvpn-udpgw64"
+#chmod +x /usr/bin/badvpn-udpgw
+cd
+git clone https://github.com/ambrop72/badvpn
+cd badvpn
+cmake -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_UDPGW=1
+make install
+
+#creating badvpn systemd service unit
+wget -O /etc/systemd/system/udpqw-7100.service "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/system/udpqw-7100.service"
+wget -O /etc/systemd/system/udpqw-7200.service "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/system/udpqw-7200.service"
+wget -O /etc/systemd/system/udpqw-7300.service "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/system/udpqw-7300.service"
+
+#reboot system 7100
+systemctl daemon-reload
+systemctl start udpqw-7100.service
+systemctl enable udpqw-7100.service
+systemctl restart udpqw-7100.service
+#reboot system 7200
+systemctl daemon-reload
+systemctl start udpqw-7200.service
+systemctl enable udpqw-7200.service
+systemctl restart udpqw-7200.service
+#reboot system 7300
+systemctl daemon-reload
+systemctl start udpqw-7300.service
+systemctl enable udpqw-7300.service
+systemctl restart udpqw-7300.service
+
+cd /root/
+# nano /etc/rc.local
+cat > /etc/rc.local <<-END
+#!/bin/sh -e
+# rc.local
+# By default this script does nothing.
+
+exit 0
+END
+
+#seting rc local
+cd
+sed -i '$ i\iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300' /etc/rc.local
+sed -i '$ i\iptables -I INPUT -p udp --dport 5300 -j ACCEPT' /etc/rc.local
+sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
+sed -i '$ i\sleep 20' /etc/rc.local
+
+# Ubah izin akses
+chmod +x /etc/rc.local
+# enable rc local
+systemctl enable rc-local
+systemctl start rc-local.service
+
 
 rm -rf install-release.sh
 rm -rf inst-ssh.sh
