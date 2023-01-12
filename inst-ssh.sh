@@ -191,6 +191,21 @@ wget -O /etc/systemd/system/udpqw-7100.service "https://raw.githubusercontent.co
 wget -O /etc/systemd/system/udpqw-7200.service "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/system/udpqw-7200.service"
 wget -O /etc/systemd/system/udpqw-7300.service "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/system/udpqw-7300.service"
 
+#reboot system 7100
+systemctl daemon-reload
+systemctl start svr-7100.service
+systemctl enable svr-7100.service
+systemctl restart svr-7100.service
+#reboot system 7200
+systemctl daemon-reload
+systemctl start svr-7200.service
+systemctl enable svr-7200.service
+systemctl restart svr-7200.service
+#reboot system 7300
+systemctl daemon-reload
+systemctl start svr-7300.service
+systemctl enable svr-7300.service
+systemctl restart svr-7300.service
 
 cd /root/
 # nano /etc/rc.local
