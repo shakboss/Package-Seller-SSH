@@ -692,6 +692,9 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 cd
 #tambah akun SSH
 wget -O /usr/local/bin/add-ssh-user "https://raw.githubusercontent.com/hidessh99/Package-tambahan-Seller/main/add-ssh-user.sh" && chmod +x /usr/local/bin/add-ssh-user
+#delete akun SSH
+wget -O /usr/local/bin/del-ssh-user "https://raw.githubusercontent.com/hidessh99/plugin-hidessh/main/del-ssh.sh" && chmod +x /usr/local/bin/del-ssh-user
+
 #hapus file
 wget -O /usr/share/nginx/html/index.html "https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/index.html" 
 
