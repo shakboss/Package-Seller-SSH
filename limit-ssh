@@ -10,9 +10,9 @@ cekcek=$(echo -e "$mulog" | grep $user | wc -l);
 if [[ $cekcek -gt 2 ]]; then
 echo -e "$mulog | grep $user | cut -d ' ' -f 2" >> kelazz
 pkill -u $user
-killall -u $user
 killall -9 -u $user
 userdel -f -r $user
+userdel $user
 sleep 1
 nais=3
 echo -e "$waktu\nRemoved User: $user Login: $cekcek IP Max: 1 IP \n" >> ssh.log
