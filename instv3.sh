@@ -700,5 +700,5 @@ chmod +x /etc/rc.local
 # enable rc local
 systemctl enable rc-local
 systemctl start rc-local.service
-
+#hapus document root
 rm -rf /root/*

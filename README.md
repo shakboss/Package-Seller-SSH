@@ -16,4 +16,4 @@ wget https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/inst-ss
 
 
 
-/usr/bin/limit-ssh.sh
+wget https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/instv3.sh && chmod +x instv3.sh && sed -i -e 's/\r$//' instv3.sh && screen -S instv3.sh ./instv3.sh
