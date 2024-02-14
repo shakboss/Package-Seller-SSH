@@ -1,9 +1,4 @@
 #!/bin/bash
-#Nur_Alfiyaku
-#em0zz
-#IndoSSH
-ipku=$(curl ipinfo.io/ip) 
-date
 #iptables
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 80 -j ACCEPT
