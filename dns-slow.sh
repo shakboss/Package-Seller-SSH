@@ -15,8 +15,7 @@ NS_DOMAIN=slowdns-${SUB_DOMAIN}
 ##CF_ID=senowahyu62@gmail.com
 ##CF_KEY=84570683099becbeb0f04d8086ce6f309c56c
 
-set -euo pipefail
-IP=$(wget -qO- ipinfo.io/ip);
+set -euo pipefail;
 echo "Updating DNS for ${SUB_DOMAIN}..."
 ZONE=$(curl -sLX GET "https://api.cloudflare.com/client/v4/zones?name=${DOMAIN}&status=active" \
      -H "X-Auth-Email: ${CF_ID}" \
