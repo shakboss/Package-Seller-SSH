@@ -1,10 +1,4 @@
 #!/bin/bash
-RED='\e[1;31m'
-GREEN='\e[0;32m'
-BLUE='\e[0;34m'
-NC='\e[0m'
-MYIP=$(wget -qO- ipinfo.io/ip);
-echo "Checking VPS"
 clear
 data=(`find /var/log/ -name *.log`);
 for log in "${data[@]}"
