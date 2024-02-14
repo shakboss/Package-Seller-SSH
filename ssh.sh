@@ -1,27 +1,5 @@
 #!/bin/bash
 # ==================================================
-
-# initializing var
-export DEBIAN_FRONTEND=noninteractive
-MYIP=$(wget -qO- ipinfo.io/ip);
-MYIP2="s/xxxxxxxxx/$MYIP/g";
-NET=$(ip -o $ANU -4 route show to default | awk '{print $5}');
-source /etc/os-release
-ver=$VERSION_ID
-
-#detail nama perusahaan
-country=ID
-state=Indonesia
-locality=Indonesia
-organization=hidessh.com
-organizationalunit=hidessh.com
-commonname=hidessh.com
-email=admin@hidessh.com
-
-# simple password minimal
-wget -O /etc/pam.d/common-password "https://gitlab.com/hidessh/baru/-/raw/main/password"
-chmod +x /etc/pam.d/common-password
-
 # go to root
 cd
 
