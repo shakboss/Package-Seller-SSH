@@ -8,7 +8,6 @@ apt-get install libcurl4-openssl-dev libssl-dev libjansson-dev automake autotool
 apt install iptables iptables-persistent -y
 apt install curl socat xz-utils wget apt-transport-https gnupg gnupg2 gnupg1 dnsutils lsb-release -y 
 apt install socat cron bash-completion ntpdate -y
-ipku=$(curl ipinfo.io/ip) 
 date
 #iptables
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
