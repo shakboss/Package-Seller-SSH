@@ -1,12 +1,5 @@
 #!/bin/bash
 # Script auto create trial user SSH
-# yg akan expired dalam hitungan menit/jam
-
-IP=$(wget -qO- ipv4.icanhazip.com)
-domain=$(cat /etc/v2ray/domain)
-Login=trial-`</dev/urandom tr -dc X-Z0-9 | head -c4`
-Pass=`</dev/urandom tr -dc a-f0-9 | head -c10`
-useradd -s /bin/false -M $Login && echo -e "$Pass\n$Pass\n"|passwd $Login &> /dev/null
 echo -e ""
 echo -e "Akun otomatis mati setelah 10 menit sejak akun di buat"
 echo -e "Thank You For Using Our Services"
