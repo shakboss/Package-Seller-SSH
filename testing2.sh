@@ -72,8 +72,8 @@ systemctl start webcoket-https
 systemctl restart webcoket-https
 
 #nginx  44 to 600 to Nginx 2096 HTTP
-wget -O /usr/local/bin/ws-nginxhttp https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/ssh%20websocket/ws-drophttps.sh && chmod +x /usr/local/bin/ws-nginxhttp
-wget -O /etc/systemd/system/ws-nginxhttp.service https://raw.githubusercontent.com/hidessh99/Package-Seller-SSH/main/ssh%20websocket/ws-drophttps.service && chmod +x  /etc/systemd/system/ws-nginxhttp.service
+wget -O /usr/local/bin/ws-nginxhttp https://raw.githubusercontent.com/shakboss/Package-Seller-SSH/main/ssh%20websocket/ws-drophttps.sh && chmod +x /usr/local/bin/ws-nginxhttp
+wget -O /etc/systemd/system/ws-nginxhttp.service https://raw.githubusercontent.com/shakboss/Package-Seller-SSH/main/ssh%20websocket/ws-drophttps.service && chmod +x  /etc/systemd/system/ws-nginxhttp.service
 systemctl daemon-reload
 systemctl enable ws-nginxhttp
 systemctl restart ws-nginxhttp
