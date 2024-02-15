@@ -12,10 +12,6 @@ CYAN='\033[0;36m'
 LIGHT='\033[0;37m'
 # ==========================================
 # Getting a
-MYIP=$(wget -qO- ipinfo.io/ip);
-echo "Checking VPS"
-
-clear
 apt install jq curl -y
 
 DOMAIN=ipsvr.me
@@ -31,7 +27,6 @@ NS_DOMAIN=slowdns-${SUB_DOMAIN}
 ##CF_KEY=84570683099becbeb0f04d8086ce6f309c56c
 
 set -euo pipefail
-IP=$(wget -qO- ipinfo.io/ip);
 echo "Updating DNS for ${SUB_DOMAIN}..."
 ZONE=$(curl -sLX GET "https://api.cloudflare.com/client/v4/zones?name=${DOMAIN}&status=active" \
      -H "X-Auth-Email: ${CF_ID}" \
